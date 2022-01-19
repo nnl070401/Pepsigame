@@ -1,6 +1,6 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
-import {AuthencationNavigator} from '../Navigations/AuthencationNavigations';
+import {AuthencationNavigator} from './AuthencationNavigations';
 
 const RootNavigator: React.FC = () => {
     return (

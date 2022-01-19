@@ -2,8 +2,7 @@ import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../Screens/Login';
 import SignUp from '../Screens/SignUp';
-import Rules from './../Screens/Rules';
-import otp from './otp/otp';
+import Rules from '../Screens/Rules';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +12,6 @@ export const AuthencationNavigator: React.FC = () => {
             <Stack.Screen name="SignUp" component={SignUp}/>
             <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="Rules" component={Rules}/> 
-            <Stack.Screen name="otp" component={Rules}/> 
         </Stack.Navigator>
     );
 };

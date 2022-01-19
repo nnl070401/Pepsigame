@@ -1,48 +1,24 @@
 import React,{useState} from 'react';
 import CheckBox from '@react-native-community/checkbox';
-import TextButton from '../Navigations/Button/TxBtn'
+import TextButton from '../../components/Navigations/button/TxBtn'
 import {
     View,
     Text,
     StyleSheet,
     TextInput,
-    Alert,
     Button,
+    ImageBackground,
 } from 'react-native';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import TxButton from '../Navigations/Button/TxBtn';
-import TextInputField from '../Navigations/input/TextInputField';
-import RetangleButton from '../Navigations/Button/RetangleButton';
 
-const PhoneER =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
-  const signInSchema = Yup.object({
-    phoneNumber: Yup.string()
-      .required('Enter your phone number!')
-      .min(6, 'enter at least 6 numbers')
-      .max(12, 'enter up to 12 numbers')
-      .matches(PhoneER, 'ERROR'),
-    userName: Yup.string()
-      .min(2, 'Enter at least 2 characters')
-      .max(100, 'Enter up to 100 characters')
-      .required('Enter your name!'),
-  });
 
 const SignUp: React.FC = (props: any) => {
     const [text, onChangeText] = React.useState('');
     const [text1, onChangeText1] = React.useState('');
     const [check1, setCheck1] = useState(false);
     const {navigation} = (props);
-    const isAllTrue = (isTermRead: boolean, formikValid: boolean) => {
-        if (isTermRead === true || formikValid === true) {
-          return true;
-        }
-        return false;
-      };
     return (
-        <View style={styles.container}>
+        <ImageBackground source={require('../Screens/assets/backgroud.png')}
+        style={styles.container}>   
             <Text style={styles.text1}>
                 Hey, chào mừng bạn đến với
             </Text>
@@ -70,9 +46,10 @@ const SignUp: React.FC = (props: any) => {
             />
             
             <View style={styles.btnOTP}>
-                <RetangleButton
+            <Button
                 title='Lấy mã OTP'
-                onPress={() => Alert.alert('Simple Button pressed')}
+                color="#B7B9C0"
+                onPress={() => navigation.navigate('')}
                 />
             </View>
             <Text style={styles.text4}>
@@ -97,16 +74,15 @@ const SignUp: React.FC = (props: any) => {
                     Tôi đã đọc và đồng ý với
             </Text>
             <TextButton
+            titleStyle={{color:'#FFFF00'}}
             title='thể lệ chương trình'
             onPress={() => {navigation.navigate('Rules')}}
             />
             <Text style={styles.text6}>
                     Pepsi Tết.
             </Text>
-            </View>
-            
-            
-        </View>
+            </View>    
+        </ImageBackground>
         
         
         
@@ -117,28 +93,37 @@ export default SignUp;
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'#ffffff',
+        
 
+    },
+    brimage:{
+        flex: 1,
+    width: undefined,
+     height: undefined,
+    flexDirection: 'column',
+     backgroundColor:'transparent',
+    justifyContent: 'flex-start',
     },
     text1:{
         position: 'absolute',
-        width:179,
+        width:200,
         height:24,
         left:98,
         top:112,
 
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
-        fontSize:16,
+        fontSize:15,
         fontWeight:'600',
         lineHeight:24,
+        color:'#fff'
     },
 
     text2:{
         position: 'absolute',
         width:163,
         height:148,
-        left:106,
+        left:116,
         top:136,
 
         fontFamily: 'Open Sans',
@@ -147,7 +132,7 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         lineHeight:48,
 
-        color:'#000000'
+        color:'#fff'
     },
 
     text3:{
@@ -160,13 +145,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontSize:22,
-        fontWeight:'normal',
+        fontWeight:'bold',
         lineHeight:26,
 
         textAlign:'center',
         letterSpacing:-0.3,
 
-        color:'#414141',
+        color:'#fff',
     },
 
     
@@ -180,6 +165,8 @@ const styles = StyleSheet.create({
 
         borderRadius:8,
         borderWidth:1,
+        backgroundColor:'#fff',
+        borderColor:'#fff'
     },
     textIp2:{
         position: 'absolute',
@@ -190,6 +177,8 @@ const styles = StyleSheet.create({
 
         borderRadius:8,
         borderWidth:1,
+        backgroundColor:'#fff',
+        borderColor:'#fff'
     },
     Ckbox:{
         position: 'absolute',
@@ -214,6 +203,8 @@ const styles = StyleSheet.create({
         top:530,
     
         borderRadius:8,
+        
+
     },
     text4:{
         position: 'absolute',
@@ -228,7 +219,7 @@ const styles = StyleSheet.create({
         fontWeight:'normal',
         lineHeight:14,
 
-        color:'#000000'
+        color:'#fff'
     },
 
     btnDN:{
@@ -254,7 +245,7 @@ const styles = StyleSheet.create({
         fontWeight:'normal',
         lineHeight:14,
 
-        color:'#000000',
+        color:'#fff',
 
     },
     text6:{
@@ -270,7 +261,7 @@ const styles = StyleSheet.create({
         fontWeight:'normal',
         lineHeight:14,
 
-        color:'#000000',
+        color:'#fff',
 
     },
 });

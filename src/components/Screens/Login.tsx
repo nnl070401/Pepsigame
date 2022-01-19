@@ -1,24 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     View,
     Text, 
     StyleSheet, 
     TextInput,
     Button,
-    Alert
+    Alert,
+    ImageBackground
+   
 } from 'react-native';
 
 const Login: React.FC = (prop: any) => {
     const [text, onChangeText] = React.useState('');
     const {navigation} = (prop);
     return (
-        <View style={styles.container}>
+        <ImageBackground source={require('../Screens/assets/backgroud.png')}
+        style={styles.container}>
             <Text style={styles.text1}>
                 Hey, chào mừng bạn đến với
             </Text>
 
             <Text style={styles.text2}>
-                Pepsi Tet
+            Pepsi Tet
             </Text>
 
             <Text style={styles.text3}>
@@ -51,7 +54,7 @@ const Login: React.FC = (prop: any) => {
                 onPress={() => navigation.navigate('SignUp')}
                 />
             </View>
-        </View>
+        </ImageBackground>
         
         
       );
@@ -66,23 +69,24 @@ const styles = StyleSheet.create({
     },
     text1:{
         position: 'absolute',
-        width:179,
+        width:200,
         height:24,
         left:98,
         top:112,
 
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
-        fontSize:16,
+        fontSize:15,
         fontWeight:'600',
         lineHeight:24,
+        color:'#fff'
     },
 
     text2:{
         position: 'absolute',
         width:163,
         height:148,
-        left:106,
+        left:116,
         top:136,
 
         fontFamily: 'Open Sans',
@@ -91,31 +95,31 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         lineHeight:48,
 
-        color:'#000000'
+        color:'#fff'
     },
 
     text3:{
         position: 'absolute',
-        width:103,
+        width:150,
         height:26,
-        left:136,
+        left:122,
         top:214,
 
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontSize:22,
-        fontWeight:'normal',
+        fontWeight:'bold',
         lineHeight:26,
 
         textAlign:'center',
         letterSpacing:-0.3,
 
-        color:'#414141',
+        color:'#fff',
     },
 
     text4:{
         position: 'absolute',
-        width:78,
+        width:150,
         height:16,
         left:17,
         top:280,
@@ -123,11 +127,11 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontSize:14,
-        fontWeight:'normal',
+        fontWeight:'bold',
         lineHeight:16,
         letterSpacing:-0.3,
 
-        color:'#414141',
+        color:'#fff',
     },
 
     textIp:{
@@ -139,6 +143,8 @@ const styles = StyleSheet.create({
 
         borderRadius:8,
         borderWidth:1,
+        backgroundColor:'#fff',
+        borderColor:'#fff'
     },
     btnOTP:{
         position: 'absolute',
@@ -162,7 +168,7 @@ const styles = StyleSheet.create({
         fontWeight:'normal',
         lineHeight:14,
 
-        color:'#000000'
+        color:'#fff'
     },
 
     btnDK:{
