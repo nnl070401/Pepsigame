@@ -9,12 +9,14 @@ import {
     Button,
     ImageBackground,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const SignUp: React.FC = (props: any) => {
     const [text, onChangeText] = React.useState('');
     const [text1, onChangeText1] = React.useState('');
-    const [check1, setCheck1] = useState(false);
+    const [toggleCheckbox, settoggleCheckbox] = useState(false);
+    const [complianceModal, setcomplianceModal] = useState(true);
     const {navigation} = (props);
     return (
         <ImageBackground source={require('../Screens/assets/backgroud.png')}
@@ -44,31 +46,16 @@ const SignUp: React.FC = (props: any) => {
                 value={text1}
                 placeholder='Tên người dùng'
             />
-            
-            <View style={styles.btnOTP}>
-            <Button
-                title='Lấy mã OTP'
-                color="#B7B9C0"
-                onPress={() => navigation.navigate('')}
-                />
-            </View>
-            <Text style={styles.text4}>
-                Hoặc
-            </Text>
 
-            <View style={styles.btnDN}>
-                <Button
-                title='Đăng nhập'
-                onPress={() => navigation.navigate('Login')}
-                />
-            </View>
-            <View style ={styles.Ckbox}>
-                <CheckBox
+
+            <View style={styles.ckbox}>
+                <CheckBox 
                 disabled ={false}
-                value = {check1}
-                onValueChange={(newvalue) => setCheck1(newvalue)}
+                value = {toggleCheckbox}
+                onValueChange={(newValue) => settoggleCheckbox(newValue)}
                 />
-            </View>
+            </View>  
+    
             <View>
             <Text style={styles.text5}>
                     Tôi đã đọc và đồng ý với
@@ -81,7 +68,31 @@ const SignUp: React.FC = (props: any) => {
             <Text style={styles.text6}>
                     Pepsi Tết.
             </Text>
-            </View>    
+            </View>  
+
+            
+            <TouchableOpacity style={[styles.btnOTP,
+                {backgroundColor: toggleCheckbox ? 'dodgerblue' : 'grey'},
+                ]}
+                disabled = {!toggleCheckbox}
+                onPress={() => setcomplianceModal(false)}
+                >
+                <Text
+                style={{color:'#fff', textAlign:'center',fontWeight:'bold',fontSize:16,}}>
+                    Lấy mã OTP</Text>
+
+            </TouchableOpacity>
+
+            <Text style={styles.text4}>
+                Hoặc
+            </Text>
+
+            <View style={styles.btnDN}>
+                <Button
+                title='Đăng nhập'
+                onPress={() => navigation.navigate('Login')}
+                />
+            </View>
         </ImageBackground>
         
         
@@ -180,7 +191,8 @@ const styles = StyleSheet.create({
         backgroundColor:'#fff',
         borderColor:'#fff'
     },
-    Ckbox:{
+
+    ckbox:{
         position: 'absolute',
         width:228,
         height:14,
@@ -196,12 +208,11 @@ const styles = StyleSheet.create({
         color:'#000000',
     },
     btnOTP:{
-        position: 'absolute',
+        marginTop:522,
+        padding:10,
         width:264,
         height:44,
         left:57,
-        top:530,
-    
         borderRadius:8,
         
 
