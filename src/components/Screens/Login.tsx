@@ -41,7 +41,7 @@ const Login: React.FC = (prop: any) => {
                 <Button
                 title='Lấy mã OTP'
                 color="#B7B9C0"
-                onPress={() => Alert.alert('Simple Button pressed')}
+                onPress={() => {navigation.navigate('MainScreen')}}
                 />
             </View>
             <Text style={styles.text5}>

@@ -16,11 +16,12 @@ const SignUp: React.FC = (props: any) => {
     const [text, onChangeText] = React.useState('');
     const [text1, onChangeText1] = React.useState('');
     const [toggleCheckbox, settoggleCheckbox] = useState(false);
-    const [complianceModal, setcomplianceModal] = useState(true);
+
     const {navigation} = (props);
     return (
         <ImageBackground source={require('../Screens/assets/backgroud.png')}
-        style={styles.container}>   
+        style={styles.container}> 
+        <View>
             <Text style={styles.text1}>
                 Hey, chào mừng bạn đến với
             </Text>
@@ -54,6 +55,16 @@ const SignUp: React.FC = (props: any) => {
                 value = {toggleCheckbox}
                 onValueChange={(newValue) => settoggleCheckbox(newValue)}
                 />
+                <TouchableOpacity style={[styles.btnOTP,
+                {backgroundColor: toggleCheckbox ? 'dodgerblue' : 'grey'},
+                ]}
+                disabled = {!toggleCheckbox}
+                >
+                <Text
+                style={{color:'#fff', textAlign:'center',fontWeight:'bold',fontSize:16,}}>
+                    Lấy mã OTP</Text>
+
+            </TouchableOpacity>
             </View>  
     
             <View>
@@ -68,24 +79,13 @@ const SignUp: React.FC = (props: any) => {
             <Text style={styles.text6}>
                     Pepsi Tết.
             </Text>
-            </View>  
-
-            
-            <TouchableOpacity style={[styles.btnOTP,
-                {backgroundColor: toggleCheckbox ? 'dodgerblue' : 'grey'},
-                ]}
-                disabled = {!toggleCheckbox}
-                onPress={() => setcomplianceModal(false)}
-                >
-                <Text
-                style={{color:'#fff', textAlign:'center',fontWeight:'bold',fontSize:16,}}>
-                    Lấy mã OTP</Text>
-
-            </TouchableOpacity>
 
             <Text style={styles.text4}>
                 Hoặc
             </Text>
+            </View>  
+
+        
 
             <View style={styles.btnDN}>
                 <Button
@@ -93,6 +93,10 @@ const SignUp: React.FC = (props: any) => {
                 onPress={() => navigation.navigate('Login')}
                 />
             </View>
+
+            </View> 
+            
+            
         </ImageBackground>
         
         
@@ -194,29 +198,10 @@ const styles = StyleSheet.create({
 
     ckbox:{
         position: 'absolute',
-        width:228,
-        height:14,
-        left:10,
+        left:8,
         top:400,
-
-        fontFamily: 'Roboto',
-        fontStyle: 'normal',
-        fontWeight:'normal',
-        fontSize:12,
-        lineHeight:14,
-
-        color:'#000000',
     },
-    btnOTP:{
-        marginTop:522,
-        padding:10,
-        width:264,
-        height:44,
-        left:57,
-        borderRadius:8,
-        
-
-    },
+    
     text4:{
         position: 'absolute',
         width:24,
@@ -275,4 +260,14 @@ const styles = StyleSheet.create({
         color:'#fff',
 
     },
+     btnOTP:{
+        marginTop:90,
+        padding:10,
+        width:264,
+        height:44,
+        left:52,
+        borderRadius:8,
+        
+
+   },
 });
